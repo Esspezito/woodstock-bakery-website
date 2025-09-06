@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woodstock Bakery - Artisan Breads | Cape Town</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        secondary: '#D2691E',
+                        accent: '#FFD700',
+                        cream: '#FFF8F0',
+                        warm: '#F5E6D3'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        elegant: ['Cormorant Garamond', 'serif'],
+                        modern: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(139, 69, 19, 0.6)), url('Header image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .text-logo {
+            letter-spacing: 0.05em;
+        }
+        .float-in {
+            animation: floatIn 1.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .float-in-delay-1 { animation-delay: 0.2s; }
+        .float-in-delay-2 { animation-delay: 0.4s; }
+        .float-in-delay-3 { animation-delay: 0.6s; }
+        .float-in-delay-4 { animation-delay: 0.8s; }
+        
+        .btn-3d {
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .btn-3d:hover {
+            transform: perspective(1000px) rotateX(-10deg) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        .btn-3d:active {
+            transform: perspective(1000px) rotateX(5deg) scale(0.98);
+        }
+        
+        .text-3d {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.3);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .parallax-text {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body class="bg-cream font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="woodstock Bakery logo.jpg" alt="Woodstock Bakery Logo" class="h-16 w-16 object-contain">
+                    <div class="flex flex-col">
+                        <h1 class="text-2xl font-serif font-bold text-primary text-logo">WOODSTOCK</h1>
+                        <p class="text-sm text-secondary font-semibold -mt-1 tracking-wider">BAKERY</p>
+                        <p class="text-xs text-gray-500">EST. 2013</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors">About</a>
+                    <a href="#products" class="text-gray-700 hover:text-primary font-medium transition-colors">Our Breads</a>
+                    <a href="#process" class="text-gray-700 hover:text-primary font-medium transition-colors">Process</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white border-t" id="mobile-menu">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#home" class="block px-3 py-2 text-gray-700">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700">About</a>
+                <a href="#products" class="block px-3 py-2 text-gray-700">Our Breads</a>
+                <a href="#process" class="block px-3 py-2 text-gray-700">Process</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 min-h-screen hero-bg flex items-center relative overflow-hidden">
+        <!-- Floating particles -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-10 w-3 h-3 bg-accent/30 rounded-full floating"></div>
+            <div class="absolute top-1/3 right-16 w-2 h-2 bg-white/40 rounded-full floating" style="animation-delay: -1s;"></div>
+            <div class="absolute bottom-1/3 left-1/4 w-4 h-4 bg-accent/20 rounded-full floating" style="animation-delay: -2s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Hero Content -->
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <h1 class="text-6xl lg:text-7xl font-elegant font-bold text-white leading-tight text-3d float-in parallax-text">
+                            Artisan Breads<br>
+                            <span class="text-accent font-black">Baked with Love</span>
+                        </h1>
+                        <div class="space-y-3 float-in float-in-delay-1">
+                            <p class="text-xl text-white/90 font-medium font-modern tracking-wide">
+                                Wood-fired • Slow-fermented • Hand-shaped
+                            </p>
+                            <p class="text-lg text-white/80 font-elegant">
+                                Crafting tradition since 2013 in Cape Town
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 float-in float-in-delay-2">
+                        <a href="#products" class="btn-3d bg-accent hover:bg-yellow-500 text-primary px-10 py-5 rounded-full font-bold text-lg text-center border-2 border-accent shadow-2xl font-modern tracking-wide">
+                            VIEW OUR BREADS
+                        </a>
+                        <a href="#contact" class="btn-3d border-3 border-white text-white hover:bg-white hover:text-primary px-10 py-5 rounded-full font-bold text-lg text-center backdrop-blur-sm bg-white/10 font-modern tracking-wide">
+                            VISIT OUR BAKERY
+                        </a>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="pt-8 border-t border-white/20 float-in float-in-delay-3">
+                        <p class="text-sm text-white/70 mb-3 font-modern uppercase tracking-wider">Trusted by Cape Town's finest:</p>
+                        <div class="flex flex-wrap gap-4 text-sm text-white font-medium">
+                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full">Luke Dale-Roberts</span>
+                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full">Chef's Warehouse</span>
+                            <span class="bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full">85+ Restaurants</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="relative float-in float-in-delay-4">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 border border-white/20">
+                        <div class="aspect-square bg-gradient-to-br from-white/20 to-accent/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <div class="text-center space-y-4 floating">
+                                <div class="text-7xl font-elegant font-black text-white text-3d">48hr</div>
+                                <p class="text-2xl text-white font-bold font-modern">Sourdough Fermentation</p>
+                                <div class="w-32 h-1 bg-accent mx-auto rounded-full"></div>
+                                <div class="space-y-2">
+                                    <p class="text-white/90 font-medium font-elegant text-lg">Traditional Methods</p>
+                                    <p class="text-white/90 font-medium font-elegant text-lg">Stone-Ground Flour</p>
+                                    <p class="text-white/90 font-medium font-elegant text-lg">Wood-Fired Ovens</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Our Story</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Founded in 2013 by Paul Hartmann and Paul Cremer, born from a unique mentor-student relationship
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="space-y-6">
+                    <div class="bg-warm border-l-4 border-primary p-6 rounded-r-lg">
+                        <h3 class="text-xl font-serif font-semibold text-primary mb-3">Our Philosophy</h3>
+                        <p class="text-gray-700 italic leading-relaxed">
+                            "We follow traditional bread-making methods using the best local ingredients, handling them as little as possible from scaling to firing. We prioritize nutritional content over commercial efficiency."
+                        </p>
+                    </div>
+
+                    <p class="text-gray-600 leading-relaxed">
+                        Every day, our team of 20+ passionate craftspeople hand-shapes up to 800 loaves in our wood-fired ovens. Our 48-hour sourdough process and commitment to stone-ground flour has earned us the trust of 85+ top Cape Town restaurants.
+                    </p>
+
+                    <p class="text-gray-600 leading-relaxed">
+                        From our original location at The Biscuit Mill to our current home in Salt River, we've remained committed to the ancient craft of bread making, bringing authentic artisan breads to Cape Town's tables.
+                    </p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="bg-cream rounded-2xl p-8">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-4">
+                            <div class="text-4xl font-bold text-primary">11+</div>
+                            <div class="text-gray-600">Years of Excellence</div>
+                        </div>
+                        <div class="text-center p-4">
+                            <div class="text-4xl font-bold text-primary">85+</div>
+                            <div class="text-gray-600">Restaurant Partners</div>
+                        </div>
+                        <div class="text-center p-4">
+                            <div class="text-4xl font-bold text-primary">48hr</div>
+                            <div class="text-gray-600">Sourdough Process</div>
+                        </div>
+                        <div class="text-center p-4">
+                            <div class="text-4xl font-bold text-primary">800</div>
+                            <div class="text-gray-600">Daily Loaves</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founders -->
+            <div class="mt-16 pt-16 border-t">
+                <h3 class="text-3xl font-serif font-bold text-center text-gray-900 mb-12">Meet the Founders</h3>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-white border-2 border-warm p-8 rounded-2xl text-center">
+                        <h4 class="text-2xl font-serif font-bold text-primary mb-2">Paul Hartmann</h4>
+                        <p class="text-secondary font-semibold mb-4">Co-Founder & Master Baker</p>
+                        <p class="text-gray-600">
+                            Established chef and educator who founded the South African Chefs Academy. Paul's vision drives our commitment to authentic methods.
+                        </p>
+                    </div>
+                    <div class="bg-white border-2 border-warm p-8 rounded-2xl text-center">
+                        <h4 class="text-2xl font-serif font-bold text-primary mb-2">Paul Cremer</h4>
+                        <p class="text-secondary font-semibold mb-4">Co-Founder & Artisan Baker</p>
+                        <p class="text-gray-600">
+                            Academy graduate who completed a 3-year apprenticeship at Ile de Pain. Paul brings precision and passion to every loaf.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Our Artisan Breads</h2>
+                <p class="text-xl text-gray-600">Made fresh daily with stone-ground flour</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Sourdough -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all relative">
+                    <div class="absolute top-4 right-4 bg-accent text-primary px-3 py-1 rounded-full text-sm font-bold z-10">
+                        BEST SELLER
+                    </div>
+                    <div class="h-48 overflow-hidden">
+                        <img src="Sourdough.jpeg" 
+                             alt="Artisan sourdough bread" 
+                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Sourdough</h3>
+                        <p class="text-gray-600 mb-4">Traditional 48-hour fermented sourdough with a perfect crust and complex flavor</p>
+                        <div class="text-3xl font-bold text-primary">R45</div>
+                    </div>
+                </div>
+
+                <!-- Baguette -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img src="French Baguette.jpg" 
+                             alt="Fresh French baguettes" 
+                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">French Baguette</h3>
+                        <p class="text-gray-600 mb-4">Crispy, golden baguettes with a light, airy crumb - perfect for any meal</p>
+                        <div class="text-3xl font-bold text-primary">R25</div>
+                    </div>
+                </div>
+
+                <!-- Five Grain -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Five grain bread.webp" 
+                             alt="Five-grain bread with seeds" 
+                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Five-Grain</h3>
+                        <p class="text-gray-600 mb-4">Hearty multi-grain bread packed with nutrients, seeds, and wholesome flavor</p>
+                        <div class="text-3xl font-bold text-primary">R50</div>
+                    </div>
+                </div>
+
+                <!-- Rye -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Rye Bread.jpg" 
+                             alt="Dark rye bread" 
+                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Rye Bread</h3>
+                        <p class="text-gray-600 mb-4">Dense, nutritious whole grain rye with caraway seeds and rich flavor</p>
+                        <div class="text-3xl font-bold text-primary">R40</div>
+                    </div>
+                </div>
+
+                <!-- Ciabatta -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Ciabatta.jpg" 
+                             alt="Italian ciabatta bread" 
+                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Ciabatta</h3>
+                        <p class="text-gray-600 mb-4">Italian-style bread with characteristic holes, olive oil, and chewy texture</p>
+                        <div class="text-3xl font-bold text-primary">R38</div>
+                    </div>
+                </div>
+
+                <!-- Potato Bread -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1598373182133-52452f7691ef?w=400&q=80" 
+                             alt="Soft pale potato bread" 
+                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Potato Bread</h3>
+                        <p class="text-gray-600 mb-4">Soft, moist bread made with real potatoes for exceptional texture</p>
+                        <div class="text-3xl font-bold text-primary">R35</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Products -->
+            <div class="mt-12 text-center">
+                <p class="text-lg text-gray-700 font-medium mb-2">Also Available:</p>
+                <p class="text-gray-600">Butter Croissants (R15) • Brioche • Soft-Butter Rolls • Chocolate Breadsticks</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Our Craft Process</h2>
+                <p class="text-xl text-gray-600">Traditional methods, no shortcuts</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                        1
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Stone-Ground Flour</h3>
+                    <p class="text-gray-600">We source the finest grains and mill them fresh</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                        2
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Hand Shaping</h3>
+                    <p class="text-gray-600">Every loaf individually shaped by skilled bakers</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                        3
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Slow Fermentation</h3>
+                    <p class="text-gray-600">48-hour process for flavor and digestibility</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                        4
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Wood-Fired Oven</h3>
+                    <p class="text-gray-600">Traditional baking for the perfect crust</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Markets Section -->
+    <section class="py-20 bg-warm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Find Us At Markets</h2>
+                <p class="text-xl text-gray-600">Fresh bread available at weekend markets</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl text-center">
+                    <h3 class="text-xl font-semibold text-primary mb-2">OZCF Market</h3>
+                    <p class="text-gray-700">Saturdays: 9am - 2pm</p>
+                    <p class="text-gray-600">Granger Bay, V&A</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl text-center">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Root 44</h3>
+                    <p class="text-gray-700">Weekends: 10am - 3pm</p>
+                    <p class="text-gray-600">Stellenbosch</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl text-center">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Direct from Bakery</h3>
+                    <p class="text-gray-700">Mon-Fri & Sun</p>
+                    <p class="text-gray-600">6:30am - 2:00pm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Visit Our Bakery</h2>
+                        <p class="text-xl text-gray-600">A little hard to find, but worth the journey!</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">📍</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Location</h3>
+                                <p class="text-gray-600">13-15 Brickfield Road<br>Salt River, Cape Town 7925</p>
+                                <p class="text-sm text-gray-500 italic mt-1">*Originally at The Biscuit Mill</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">📞</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Phone</h3>
+                                <p class="text-gray-600 font-medium">+27 21 447 8834</p>
+                                <p class="text-sm text-gray-500">Call ahead for large orders</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">⏰</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Bakery Hours</h3>
+                                <p class="text-gray-600">Monday - Friday & Sunday<br>6:30am - 2:00pm</p>
+                                <p class="text-gray-600 font-semibold">Saturday: Closed</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">📱</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Social Media</h3>
+                                <a href="https://www.instagram.com/woodstockbakeryrsa/" target="_blank" 
+                                   class="text-primary hover:text-secondary font-medium">@woodstockbakeryrsa</a>
+                                <br>
+                                <a href="https://www.facebook.com/woodstockbakerysa/" target="_blank" 
+                                   class="text-primary hover:text-secondary font-medium">Facebook: Woodstock Bakery</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map/Visual Placeholder -->
+                <div class="bg-cream rounded-2xl p-12 flex items-center justify-center">
+                    <div class="text-center space-y-4">
+                        <div class="text-6xl text-primary">📍</div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900">Salt River Location</h3>
+                        <p class="text-gray-600 max-w-sm">
+                            Look for the aroma of fresh bread on Brickfield Road. 
+                            We're tucked away but our loyal customers always find us!
+                        </p>
+                        <a href="https://maps.google.com/?q=13-15+Brickfield+Road+Salt+River+Cape+Town" 
+                           target="_blank" 
+                           class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-secondary transition-colors">
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <img src="woodstock Bakery logo.jpg" alt="Woodstock Bakery Logo" class="h-12 w-12 object-contain">
+                    <h3 class="text-2xl font-serif font-bold">WOODSTOCK BAKERY</h3>
+                </div>
+                <p class="text-gray-400">Wood-fired • Slow-fermented • Hand-shaped</p>
+                <p class="text-gray-400">Since 2013</p>
+                <div class="pt-8 border-t border-gray-800 mt-8">
+                    <p class="text-gray-500">© 2024 Woodstock Bakery. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
